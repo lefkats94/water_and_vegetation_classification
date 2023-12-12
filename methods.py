@@ -28,28 +28,28 @@ def read_sentinel2_bands(inputs_directory):
     # 10m resolution bands
     green = gdal.Open(inputs_directory + "B03.tif")
     srcband = green.GetRasterBand(1)
-    green_array = srcband.ReadAsArray(0, 0, green.RasterXSize, green.RasterYSize).astype(np.float)
+    green_array = srcband.ReadAsArray(0, 0, green.RasterXSize, green.RasterYSize).astype(np.float64)
 
     red = gdal.Open(inputs_directory + "B04.tif")
     srcband = red.GetRasterBand(1)
-    red_array = srcband.ReadAsArray(0, 0, red.RasterXSize, red.RasterYSize).astype(np.float)
+    red_array = srcband.ReadAsArray(0, 0, red.RasterXSize, red.RasterYSize).astype(np.float64)
 
     nir = gdal.Open(inputs_directory + "B08.tif")
     srcband = nir.GetRasterBand(1)
-    nir_array = srcband.ReadAsArray(0, 0, nir.RasterXSize, nir.RasterYSize).astype(np.float)
+    nir_array = srcband.ReadAsArray(0, 0, nir.RasterXSize, nir.RasterYSize).astype(np.float64)
 
     # 20m resolution bands
     red_edge1 = gdal.Open(inputs_directory + "B05.tif")
     srcband = red_edge1.GetRasterBand(1)
-    red_edge1_array = srcband.ReadAsArray(0, 0, red_edge1.RasterXSize, red_edge1.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float)
+    red_edge1_array = srcband.ReadAsArray(0, 0, red_edge1.RasterXSize, red_edge1.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float64)
 
     swir = gdal.Open(inputs_directory + "B11.tif")
     srcband = swir.GetRasterBand(1)
-    swir_array = srcband.ReadAsArray(0, 0, swir.RasterXSize, swir.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float)
+    swir_array = srcband.ReadAsArray(0, 0, swir.RasterXSize, swir.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float64)
 
     swir2 = gdal.Open(inputs_directory + "B12.tif")
     srcband = swir2.GetRasterBand(1)
-    swir2_array = srcband.ReadAsArray(0, 0, swir2.RasterXSize, swir2.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float)
+    swir2_array = srcband.ReadAsArray(0, 0, swir2.RasterXSize, swir2.RasterYSize, nir.RasterXSize, nir.RasterYSize).astype(np.float64)
 
     return red_array, green_array, nir_array, red_edge1_array, swir_array, swir2_array
 
